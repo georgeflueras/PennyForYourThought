@@ -1,23 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor() {}
+    public checked: boolean = false;
+    public indeterminate: boolean = false;
+    public labelPosition: 'before' | 'after' = 'after';
+    public disabled: boolean = false;
+    public emailFormControl: FormControl;
 
-  emailFormControl = new FormControl('', [ //email validators
-    Validators.required,
-    Validators.email,
-    
-  ]);
-
-  checked = false;
-  indeterminate = false;
-  labelPosition: 'before' | 'after' = 'after';
-  disabled = false;
-
+    constructor() {
+        this.emailFormControl = new FormControl('', [ // email validators
+            Validators.required,
+            Validators.email,
+        ]);
+    }
 }
