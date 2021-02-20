@@ -12,6 +12,7 @@ export class LoginComponent {
     public labelPosition: 'before' | 'after' = 'after';
     public disabled: boolean = false;
     public emailFormControl: FormControl;
+    public checkbox: boolean = false;
 
     constructor() {
         this.emailFormControl = new FormControl('', [ // email validators
