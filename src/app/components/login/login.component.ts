@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-login',
@@ -14,10 +15,13 @@ export class LoginComponent {
     public emailFormControl: FormControl;
     public checkbox: boolean = false;
 
-    constructor() {
-        this.emailFormControl = new FormControl('', [ // email validators
+    constructor(public dialog: MatDialog) {
+        this.emailFormControl = new FormControl('', [ 
             Validators.required,
             Validators.email,
         ]);
     }
-}
+    
+      
+    }
+

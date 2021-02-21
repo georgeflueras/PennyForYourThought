@@ -1,3 +1,66 @@
-body{
-  color: green;
+.navbar {
+  display: flex;
+  padding: 0;
+
+}
+.title {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 30px;
+}
+
+.username{
+  position: absolute;
+  right: 120px;
+  font-size: 20px;
+}
+
+.logout-button {
+  position: absolute;
+  right: 15px;
+  font-size: 18px;
+}
+
+.main-content{
+  margin: 10px 300px 10px 300px;
+}
+
+.example-stretched-tabs .mat-elevation-z4 label {
+  font-size: 50px;
+} 
+
+.example-card {
+  margin-left: 30%;
+  max-width: 500px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  
+}
+.example-card2 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 30%;
+  max-width: 500px;
+}
+
+p {
+  font-size: 20px;
+}
+
+.mat-tab {
+  display: flex;
+}
+
+.mat-card {
+  justify-content: center;
+}
+
+.latest-thoughts-label {
+  position: sticky;
+}
+
+.thought-button {
+  font-size: 18px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
 }

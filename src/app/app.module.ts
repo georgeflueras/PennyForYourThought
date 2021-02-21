@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, Router } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,11 +12,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { ThoughtsComponent } from './components/thoughts/thoughts.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDialogActions, MatDialogModule } from '@angular/material/dialog';
+import { AppRoutingModule } from './app-routing.module';
 
-const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-];
+
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    [RouterModule.forRoot(routes)],
+    AppRoutingModule,
     MatCardModule,
     BrowserAnimationsModule,
     MatTabsModule,
@@ -35,12 +35,12 @@ const routes: Routes = [
     ReactiveFormsModule, 
     MatButtonModule,
     MatCheckboxModule,
-    MatIconModule
-  ],
-  exports: [
-    RouterModule
+    MatIconModule, 
+    MatToolbarModule,
+    MatDialogModule    
   ],
   providers: [],
+  entryComponents: [MatDialogModule, MatDialogActions],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
