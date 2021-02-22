@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Routes, RouterModule, Router } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,8 +12,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { ThoughtsComponent } from './components/thoughts/thoughts.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatDialogActions, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { LiveDbService } from './live-db.service';
 
 
 
@@ -32,15 +34,18 @@ import { AppRoutingModule } from './app-routing.module';
     MatTabsModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatIconModule, 
+    MatIconModule,
     MatToolbarModule,
-    MatDialogModule    
+    MatDialogModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(LiveDbService, { dataEncapsulation: false }
+
+    ),
   ],
   providers: [],
-  entryComponents: [MatDialogModule, MatDialogActions],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

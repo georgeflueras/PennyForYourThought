@@ -1,34 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Thought} from '../../models/thought';
+import {ThoughtsService} from './thoughts.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-thoughts',
   templateUrl: './thoughts.component.html',
   styleUrls: ['./thoughts.component.css'],
 })
-export class ThoughtsComponent implements OnInit {
-  public thoughtsList: any[];
-  constructor() {
-    this.thoughtsList = [
-      {
-        title: 'Username1',
-        subtitle: 'thought',
-        paragraph:
-          'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.',
-      },
-      {
-        title: 'Username2',
-        subtitle: 'thought',
-        paragraph:
-          'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.',
-      },
-      {
-        title: 'Username3',
-        subtitle: 'thought',
-        paragraph:
-          'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.',
-      },
-    ];
+export class ThoughtsComponent implements OnInit, OnDestroy {
+  public latestThoughtsList: Thought[];
+  public myThoughtsList: Thought[];
+  private subscriptions: Subscription;
+  private latestThoughtsUrl = 'api/latestThoughtsList';
+  private myThoughtsUrl = 'api/myThoughtsList';
+
+  constructor(private thoughtsService: ThoughtsService) {
+    this.subscriptions = new Subscription();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getLatestThoughts(this.latestThoughtsUrl);
+    this.getMyThoughts(this.myThoughtsUrl);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+
+  getLatestThoughts(latestThoughtsUrl) {
+    this.subscriptions.add(
+      this.thoughtsService.getThoughts(latestThoughtsUrl)
+        .subscribe((data) => {
+          this.latestThoughtsList = data;
+        })
+      );
+  }
+
+  getMyThoughts(latestThoughtsUrl) {
+    this.subscriptions.add(
+      this.thoughtsService.getThoughts(latestThoughtsUrl)
+        .subscribe((data) => {
+          this.myThoughtsList = data;
+        })
+    );
+  }
 }

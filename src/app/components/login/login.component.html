@@ -63,7 +63,8 @@
                             <input type="password" matInput placeholder="Password">
                         </mat-form-field>
                     </div>
-                    <mat-checkbox class="terms-checkbox" [(ngModel)]="checked" [(indeterminate)]="indeterminate" 
+
+                    <mat-checkbox class="terms-checkbox" [(ngModel)]="checked" [(indeterminate)]="indeterminate"
                         [labelPosition]="labelPosition" [disabled]="disabled" [checked]="checkbox" (change)="checkbox = !checkbox">I agree with the terms
                     </mat-checkbox>
                     <button mat-raised-button color="primary" class="login-button" [disabled]="!checkbox">Register</button>
