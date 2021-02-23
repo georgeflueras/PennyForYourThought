@@ -20,47 +20,98 @@
   font-size: 18px;
 }
 
-.main-content{
-  margin: 10px 300px 10px 300px;
+.thoughts-container {
+  display: flex;
+  flex-direction: row;
+
+  padding: 10px;
+  width: 100%;
 }
 
-.example-stretched-tabs .mat-elevation-z4 label {
-  font-size: 50px;
+.my-thoughts {
+  justify-content: center;
+  background-color: #e8ecf1;
+  text-align: center;
+  font-size: 30px;
+  margin: 0 0 0 60px;
+  height: 800px;
+  width: 50%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-box-shadow: 0px 0px 55px -20px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 55px -20px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 55px -20px rgba(0,0,0,0.75);
+}
+
+.latest-thoughts {
+  background-color: #e8ecf1;
+  text-align: center;
+  font-size: 30px;
+  margin: 0 60px 0 100px;
+  height: 800px;
+  width: 50%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-box-shadow: 0px 0px 55px -20px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 55px -20px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 55px -20px rgba(0,0,0,0.75);
+}
+
+.card {
+  width:95%;
+  margin: 0 auto;
+  padding: 0;
+  margin-bottom: 10px;
+  border:none;
 } 
 
-.example-card {
-  margin-left: 30%;
-  max-width: 500px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  
-}
-.example-card2 {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  margin-left: 30%;
-  max-width: 500px;
-}
-
-p {
-  font-size: 20px;
-}
-
-.mat-tab {
-  display: flex;
-}
-
-.mat-card {
-  justify-content: center;
-}
-
-.latest-thoughts-label {
+.card-title {
+  padding: 20px;
+  background-color: lightpink;
+  width:100%;
+  height: 10%;
   position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.thought-button {
+.card-padding{
+  padding: 16px;
+}
+
+.action-container{
+  display:flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+.add-thought-btn{
   font-size: 18px;
-  position: absolute;
-  right: 20px;
-  top: 20px;
+  margin-bottom: 10px;
+}
+
+.penny-text-container{
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #bdc3c7;
+  padding: 8px;
+  height: 52px;
+}
+.penny-text{
+  font-size:18px;
+  margin: 0 ;
+}
+
+.penny-container{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #bdc3c7;
+  padding: 8px;
+}
+
+.penny-btn {
+  font-size: 17px;
+  font-weight: 500;
 }

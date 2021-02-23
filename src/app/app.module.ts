@@ -17,6 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { LiveDbService } from './live-db.service';
+import { LocalDbService } from './services/local-db.service';
 
 
 
@@ -45,7 +46,7 @@ import { LiveDbService } from './live-db.service';
 
     ),
   ],
-  providers: [],
+  providers: [LocalDbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

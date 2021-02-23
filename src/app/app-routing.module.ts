@@ -4,11 +4,12 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { ThoughtsComponent } from './components/thoughts/thoughts.component';
 import { RouterModule } from '@angular/router';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'thoughts', component: ThoughtsComponent },
+  { path: 'thoughts', component: ThoughtsComponent, canActivate: [AuthGuardService] },
   { path: 'signup', component: LoginComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'login'}
 ];

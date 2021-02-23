@@ -3,3 +3,9 @@ export interface Thought {
   subtitle: string;
   content: string;
 }
+
+export interface User {
+  name: string;
+  email: string;
+  password: string;
+}

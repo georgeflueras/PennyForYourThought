@@ -1,19 +1,19 @@
 <div class="center-content">
-    <mat-card class="example-card">
+    <mat-card class="card">
         <mat-card-header class="card-title">
             <mat-card-title>Penny For Your Thoughts</mat-card-title>
             <mat-card-subtitle>HSDS</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <mat-tab-group dynamicHeight>
+            <mat-tab-group dynamicHeight [(selectedIndex)]="selectedTab">
                 <mat-tab label="Login" [routerLink]="['/login']">
                     <div class="example-small-box">
                         <mat-form-field class="example-full-width">
                             <mat-label>Email</mat-label>
-                            <input type="email" matInput [formControl]="emailFormControl"
+                            <input type="email" matInput [formControl]="loginEmail" [(ngModel)]="loginUser.email"
                                 placeholder="Ex. pat@example.com">
                             <mat-error
-                                *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                                *ngIf="!emailFormControl.hasError('required')">
                                 Please enter a valid email address
                             </mat-error>
                             <mat-error *ngIf="emailFormControl.hasError('required')">
@@ -23,13 +23,16 @@
 
                         <mat-form-field class="example-full-width">
                             <mat-label>Password</mat-label>
-                            <input type="password" matInput placeholder="Password">
-                        </mat-form-field>
+                            <input type="password" [formControl]="loginPassword" [(ngModel)]="loginUser.password" matInput placeholder="Password">
+                            <mat-error>
+                                Invalid <strong>password</strong>
+                            </mat-error>
+                        </mat-form-field> 
                     </div>
-                    <mat-checkbox class="example-margin" [(ngModel)]="checked" [(indeterminate)]="indeterminate"
+                    <mat-checkbox class="example-margin" [(ngModel)]="rememberMe" [(indeterminate)]="indeterminate"
                         [labelPosition]="labelPosition" [disabled]="disabled">Remember me
                     </mat-checkbox>
-                    <button mat-raised-button color="primary" class="login-button" [routerLink]="['/thoughts']">Login</button>
+                    <button mat-raised-button color="primary" class="login-button" (click)="login()">Login</button>
                 </mat-tab>
 
                 <mat-tab label="Sign Up" [routerLink]="['/signup']">
@@ -37,12 +40,13 @@
 
                         <mat-form-field class="example-full-width">
                             <mat-label>Full Name</mat-label>
-                            <input type="text" matInput placeholder="John Doe">
+                            <input type="text" [(ngModel)]="newUser.name" matInput placeholder="John Doe">
                         </mat-form-field>
 
                         <mat-form-field class="example-full-width">
                             <mat-label>Email</mat-label>
                             <input type="email" matInput [formControl]="emailFormControl"
+                                [(ngModel)]="newUser.email"
                                 placeholder="Ex. john@example.com">
                             <mat-error
                                 *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
@@ -55,19 +59,23 @@
 
                         <mat-form-field class="example-full-width">
                             <mat-label>Password</mat-label>
-                            <input type="password" matInput placeholder="Password">
+                                <input type="password" [(ngModel)]="newUser.password"  matInput placeholder="Password">
                         </mat-form-field>
 
                         <mat-form-field class="example-full-width">
                             <mat-label>Confirm Password</mat-label>
-                            <input type="password" matInput placeholder="Password">
+                                <input name="confirmPassword" type="password" [(ngModel)]="confirmPassword" [formControl]="confirmPasswordFormControl" matInput placeholder="Password">
+                                <mat-error *ngIf="confirmPasswordFormControl.hasError('doesNotMatchPassword')">
+                                    Should match <strong>password</strong>
+                                </mat-error>
                         </mat-form-field>
                     </div>
-
-                    <mat-checkbox class="terms-checkbox" [(ngModel)]="checked" [(indeterminate)]="indeterminate"
+                    <a href="app/components/terms.component.html" target="_blank">See the terms and conditions</a><br>
+                    <mat-checkbox class="terms-checkbox" [(ngModel)]="agreeTerms" [(indeterminate)]="indeterminate"
+                    
                         [labelPosition]="labelPosition" [disabled]="disabled" [checked]="checkbox" (change)="checkbox = !checkbox">I agree with the terms
                     </mat-checkbox>
-                    <button mat-raised-button color="primary" class="login-button" [disabled]="!checkbox">Register</button>
+                    <button mat-raised-button color="primary" class="login-button" (click)="signUp()" [disabled]="!checkbox">Register</button>
                 </mat-tab>
             </mat-tab-group>
         </mat-card-content>
