@@ -1,14 +1,14 @@
 .navbar {
   display: flex;
   padding: 0;
-
 }
 .title {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   font-size: 30px;
 }
 
-.username{
+.username {
   position: absolute;
   right: 120px;
   font-size: 20px;
@@ -38,9 +38,9 @@
   width: 50%;
   overflow-y: auto;
   overflow-x: hidden;
-  -webkit-box-shadow: 0px 0px 55px -20px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 55px -20px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 55px -20px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 0px 55px -20px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 55px -20px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 55px -20px rgba(0, 0, 0, 0.75);
 }
 
 .latest-thoughts {
@@ -52,59 +52,60 @@
   width: 50%;
   overflow-y: auto;
   overflow-x: hidden;
-  -webkit-box-shadow: 0px 0px 55px -20px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 55px -20px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 55px -20px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 0px 55px -20px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 55px -20px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 55px -20px rgba(0, 0, 0, 0.75);
 }
 
 .card {
-  width:95%;
+  width: 95%;
   margin: 0 auto;
   padding: 0;
   margin-bottom: 10px;
-  border:none;
-} 
+  border: none;
+}
 
 .card-title {
   padding: 20px;
-  background-color: lightpink;
-  width:100%;
-  height: 10%;
+  background-color: #3f51b5;
+  color: white;
+  width: 100%;
+  height: 8%;
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-.card-padding{
+.card-padding {
   padding: 16px;
 }
 
-.action-container{
-  display:flex;
+.action-container {
+  display: flex;
   justify-content: flex-end;
   margin-right: 20px;
 }
 
-.add-thought-btn{
+.add-thought-btn {
   font-size: 18px;
   margin-bottom: 10px;
 }
 
-.penny-text-container{
-  display:flex;
+.penny-text-container {
+  display: flex;
   justify-content: flex-start;
   align-items: center;
   background-color: #bdc3c7;
   padding: 8px;
   height: 52px;
 }
-.penny-text{
-  font-size:18px;
-  margin: 0 ;
+.penny-text {
+  font-size: 18px;
+  margin: 0;
 }
 
-.penny-container{
-  display:flex;
+.penny-container {
+  display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #bdc3c7;
@@ -114,4 +115,73 @@
 .penny-btn {
   font-size: 17px;
   font-weight: 500;
+}
+
+.my-thoughts-mobile {
+  background-color: #e8ecf1;
+}
+
+.latest-thoughts-mobile {
+  background-color: #e8ecf1;
+}
+
+.card-padding-mobile {
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 0px) and (max-width: 600px) {
+  .navbar {
+    display: block;
+  }
+  .my-thoughts {
+    display: none;
+  }
+  .latest-thoughts {
+    display: none;
+  }
+  .mobile-content {
+    display: block;
+  }
+  .add-thought-btn {
+    font-size: 18px;
+    margin-top: 8px;
+  }
+  .thoughts-container {
+    padding: 0;
+  }
+  .latest-thoughts-mobile {
+    padding-top: 10px;
+  }
+  .navbar-title {
+    display: none;
+  }
+  .username {
+    justify-items: center;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1000px) {
+  .mobile-content {
+    display: none;
+  }
+  .latest-thoughts {
+    width: 70%;
+    margin: 0 0 0 10px;
+    -webkit-box-shadow: 0px 11px 32px -16px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 11px 32px -16px rgba(0,0,0,0.75);
+box-shadow: 0px 11px 32px -16px rgba(0,0,0,0.75);
+  }
+  .my-thoughts {
+    width: 70%;
+    margin: 0 10px 0 0;
+    -webkit-box-shadow: 0px 11px 32px -16px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 11px 32px -16px rgba(0,0,0,0.75);
+box-shadow: 0px 11px 32px -16px rgba(0,0,0,0.75);
+  }
+}
+
+@media screen and (min-width: 1001px) and (max-width: 1500px) {
+  .mobile-content {
+    display: none;
+  }
 }

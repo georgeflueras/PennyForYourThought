@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { LiveDbService } from './live-db.service';
 import { LocalDbService } from './services/local-db.service';
+import { TermsComponent } from './components/terms/terms.component';
 
 
 
@@ -25,7 +26,8 @@ import { LocalDbService } from './services/local-db.service';
   declarations: [
     AppComponent,
     LoginComponent,
-    ThoughtsComponent
+    ThoughtsComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,
