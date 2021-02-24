@@ -1,6 +1,7 @@
+<!--Desktop page-->
 <div class="navbar">
     <mat-toolbar class="title" color='primary'>
-        <span>Penny For Your Thoughts</span>
+        <span class="navbar-title">Penny For Your Thoughts</span>
         <span class="username">UserName</span>
         <button mat-raised-button color="accent" class="logout-button" [routerLink]="['/login']">Logout</button>
     </mat-toolbar>
@@ -51,6 +52,58 @@
             </mat-card>
         </ng-container>
     </div>
+</div>
+
+<!--Mobile page-->
+<div class="mobile-content">
+    <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+        <mat-tab label="My Thoughts" class="latest-thoughts-label">
+            <div class="my-thoughts-mobile">
+                <div class="action-container">
+                    <button mat-raised-button color="accent" class="add-thought-btn">Add New Thought</button>
+                </div>
+                <ng-container *ngFor="let thought of myThoughtsList">
+                    <mat-card class="card">
+                        <div class="card-padding">
+                            <mat-card-header>
+                                <mat-card-title>{{thought.title}}</mat-card-title>
+                                <mat-card-subtitle>{{thought.subtitle}}</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <p>{{thought.content}}</p>
+                            </mat-card-content>
+                        </div>
+                        <div class="penny-text-container">
+                            <p class="penny-text">x pennies collected</p>
+                        </div>
+                    </mat-card>
+    
+                </ng-container>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Latest Thoughts">
+            <div class="latest-thoughts-mobile">
+            <ng-container *ngFor="let thought of latestThoughtsList">
+                <mat-card class="card">
+                    <div class="card-padding">
+                        <mat-card-header>
+                            <mat-card-title>{{thought.title}}</mat-card-title>
+                            <mat-card-subtitle>{{thought.subtitle}}</mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p>{{thought.content}}</p>
+                        </mat-card-content>
+                    </div>
+                    <div class="penny-container">
+                        <p class="penny-text">x pennies collected</p>
+                        <button mat-raised-button color="accent" class="penny-btn">+ €</button>
+                    </div>
+                </mat-card>
+            </ng-container>
+        </div>
+        </mat-tab>
+    </mat-tab-group>
 </div>
 
 <router-outlet></router-outlet>

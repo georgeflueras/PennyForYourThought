@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Thought} from '../../models/thought';
-import {ThoughtsService} from './thoughts.service';
+import {ThoughtsService} from '../../services/thoughts.service';
 import {Subscription} from 'rxjs';
 
 @Component({
