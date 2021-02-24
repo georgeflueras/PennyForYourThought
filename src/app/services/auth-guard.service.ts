@@ -8,13 +8,14 @@ import { LocalDbService } from './local-db.service';
 export class AuthGuardService implements CanActivate {
   constructor(public router: Router, private localDbService: LocalDbService) {}
   canActivate(): boolean {
-    let email = document.cookie.split('="')[1];
-    email = email.substring(0, email.length - 1);
-    const dbUser = this.localDbService.get<User>('users', 'email', email);
+    const sessionUser = sessionStorage.getItem('user');
+    let cookieUser = document.cookie?.split('="')[1]?.split(';')[0];
+    const userEmail = sessionUser || cookieUser;
+    const dbUser = this.localDbService.get<User>('users', 'email', userEmail);
     if (!dbUser) {
       this.router.navigate(['/login']);
       return false;
     }
     return true;
   }
-}
+} 
