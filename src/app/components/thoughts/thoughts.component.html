@@ -2,8 +2,8 @@
 <div class="navbar">
     <mat-toolbar class="title" color='primary'>
         <span class="navbar-title">Penny For Your Thoughts</span>
-        <span class="username">UserName</span>
-        <button mat-raised-button color="accent" class="logout-button" [routerLink]="['/login']">Logout</button>
+        <span class="username">Welcome, {{user.name}}</span>
+        <button mat-raised-button color="accent" class="logout-button" (click)="logout()">Logout</button>
     </mat-toolbar>
 </div>
 
@@ -11,21 +11,21 @@
     <div class="my-thoughts">
         <div class="card-title">My thoughts</div>
         <div class="action-container">
-            <button mat-raised-button color="accent" class="add-thought-btn">Add New Thought</button>
+            <button mat-raised-button color="accent" (click)="openDialog()" class="add-thought-btn">Add New Thought</button>
         </div>
         <ng-container *ngFor="let thought of myThoughtsList">
             <mat-card class="card">
                 <div class="card-padding">
                     <mat-card-header>
-                        <mat-card-title>{{thought.title}}</mat-card-title>
-                        <mat-card-subtitle>{{thought.subtitle}}</mat-card-subtitle>
+                        <mat-card-title>{{thought.username}}</mat-card-title>
+                        <mat-card-subtitle>{{thought.date}}</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content>
                         <p>{{thought.content}}</p>
                     </mat-card-content>
                 </div>
                 <div class="penny-text-container">
-                    <p class="penny-text">x pennies collected</p>
+                    <p class="penny-text">{{thought.totalPennies}} pennies collected</p>
                 </div>
             </mat-card>
 
@@ -38,16 +38,17 @@
             <mat-card class="card">
                 <div class="card-padding">
                     <mat-card-header>
-                        <mat-card-title>{{thought.title}}</mat-card-title>
-                        <mat-card-subtitle>{{thought.subtitle}}</mat-card-subtitle>
+                        <mat-card-title>{{thought.username}}</mat-card-title>
+                        <mat-card-subtitle>{{thought.date}}</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content>
                         <p>{{thought.content}}</p>
                     </mat-card-content>
                 </div>
                 <div class="penny-container">
-                    <p class="penny-text">x pennies collected</p>
-                    <button mat-raised-button color="accent" class="penny-btn">+ €</button>
+                    <p class="penny-text">{{thought.totalPennies}} pennies collected</p>
+                    <button mat-raised-button color="accent" class="penny-btn" (click)="likeThought(thought)" *ngIf="!isLiked(thought)">+ €</button>
+                    <button mat-raised-button color="disabled" class="penny-btn" *ngIf="isLiked(thought)" disabled><mat-icon>thumb_up</mat-icon></button>
                 </div>
             </mat-card>
         </ng-container>
@@ -60,21 +61,21 @@
         <mat-tab label="My Thoughts" class="latest-thoughts-label">
             <div class="my-thoughts-mobile">
                 <div class="action-container">
-                    <button mat-raised-button color="accent" class="add-thought-btn">Add New Thought</button>
+                    <button mat-raised-button color="accent" (click)="openDialog()" class="add-thought-btn">Add New Thought</button>
                 </div>
                 <ng-container *ngFor="let thought of myThoughtsList">
                     <mat-card class="card">
                         <div class="card-padding">
                             <mat-card-header>
-                                <mat-card-title>{{thought.title}}</mat-card-title>
-                                <mat-card-subtitle>{{thought.subtitle}}</mat-card-subtitle>
+                                <mat-card-title>{{thought.username}}</mat-card-title>
+                                <mat-card-subtitle>{{thought.date}}</mat-card-subtitle>
                             </mat-card-header>
                             <mat-card-content>
                                 <p>{{thought.content}}</p>
                             </mat-card-content>
                         </div>
                         <div class="penny-text-container">
-                            <p class="penny-text">x pennies collected</p>
+                            <p class="penny-text">{{thought.totalPennies}} pennies collected</p>
                         </div>
                     </mat-card>
     
@@ -88,17 +89,18 @@
                 <mat-card class="card">
                     <div class="card-padding">
                         <mat-card-header>
-                            <mat-card-title>{{thought.title}}</mat-card-title>
-                            <mat-card-subtitle>{{thought.subtitle}}</mat-card-subtitle>
+                            <mat-card-title>{{thought.username}}</mat-card-title>
+                            <mat-card-subtitle>{{thought.date}}</mat-card-subtitle>
                         </mat-card-header>
                         <mat-card-content>
                             <p>{{thought.content}}</p>
                         </mat-card-content>
                     </div>
                     <div class="penny-container">
-                        <p class="penny-text">x pennies collected</p>
-                        <button mat-raised-button color="accent" class="penny-btn">+ €</button>
-                    </div>
+                        <p class="penny-text">{{thought.totalPennies}} pennies collected</p>
+                        <button mat-raised-button color="accent" class="penny-btn" (click)="likeThought(thought)" *ngIf="!isLiked(thought)">+ €</button>
+                        <button mat-raised-button color="disabled" class="penny-btn" *ngIf="isLiked(thought)" disabled><mat-icon>thumb_up</mat-icon></button>
+                        </div>
                 </mat-card>
             </ng-container>
         </div>
@@ -107,3 +109,4 @@
 </div>
 
 <router-outlet></router-outlet>
+

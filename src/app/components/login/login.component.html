@@ -70,7 +70,7 @@
                             </mat-error>
                         </mat-form-field>
                     </div>
-                    <a [routerLink]="['/terms']">See the terms and conditions</a><br>
+                    <a [routerLink]="['/terms']" target="_blank">See the terms and conditions</a><br>
                     <mat-checkbox class="terms-checkbox" [(ngModel)]="agreeTerms" [(indeterminate)]="indeterminate"
                         [labelPosition]="labelPosition" [disabled]="disabled" [checked]="checkbox"
                         (change)="checkbox = !checkbox">I agree with the terms

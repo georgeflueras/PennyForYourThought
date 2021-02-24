@@ -1,0 +1,17 @@
+<div class="thought-dialog">
+    <h2 mat-dialog-title class="thought-dialog-title">Add New Thought</h2>
+    <mat-dialog-content class="mat-typography">
+        <mat-form-field class="form-field">
+            <textarea class="thought-textarea" #textarea maxlength=300 matInput  [(ngModel)]="thoughtContent" placeholder="What's on your mind today?" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+            <mat-hint align="end">{{textarea.value.length}} / 300</mat-hint>
+            <button mat-button *ngIf="thoughtContent" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+            </button>
+
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button [mat-dialog-close]="true" (click)="submitThought()" cdkFocusInitial>Post</button>
+    </mat-dialog-actions>
+</div>

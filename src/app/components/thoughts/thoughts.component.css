@@ -30,8 +30,7 @@
 
 .my-thoughts {
   justify-content: center;
-  background-color: #e8ecf1;
-  text-align: center;
+  background-color: #e8ecf1; 
   font-size: 30px;
   margin: 0 0 0 60px;
   height: 800px;
@@ -45,7 +44,6 @@
 
 .latest-thoughts {
   background-color: #e8ecf1;
-  text-align: center;
   font-size: 30px;
   margin: 0 60px 0 100px;
   height: 800px;
@@ -129,7 +127,7 @@
   margin-top: 10px;
 }
 
-@media screen and (min-width: 0px) and (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .navbar {
     display: block;
   }
@@ -180,7 +178,7 @@ box-shadow: 0px 11px 32px -16px rgba(0,0,0,0.75);
   }
 }
 
-@media screen and (min-width: 1001px) and (max-width: 1500px) {
+@media screen and (min-width: 1001px) {
   .mobile-content {
     display: none;
   }

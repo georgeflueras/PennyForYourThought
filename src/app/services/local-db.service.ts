@@ -23,6 +23,28 @@ export class LocalDbService {
         return this.db[table].find((entity: T) => entity[propertyName] === propertyValue);
     }
 
+    getAll<T>(table, propertyName, propertyValue){
+        if (!this.db[table]) {
+            return;
+        }
+
+        if(!propertyValue){
+            return this.db[table];
+        } else {
+            return this.db[table].filter((entity: T) => entity[propertyName] === propertyValue);
+        }
+    }
+
+    update<T>(table, property1, value1, property2, value2, propertyToUpdate, newValue, newTotalPennies){
+        if (!this.db[table]) {
+            return;
+        }
+        var existingRecord = this.db[table].find((entity: T) => entity[property1] === value1 && entity[property2] === value2);
+        existingRecord[propertyToUpdate] = newValue;
+        existingRecord['totalPennies'] = newTotalPennies;
+        this.save();
+    }
+
     delete<T>(table, propertyName, propertyValue) {
         this.db[table] = this.db[table].filter((entity: T) => entity[propertyName] !== propertyValue)
         this.save();
@@ -39,6 +61,4 @@ export class LocalDbService {
         }
         this.db = storedDatabase;
     }
-
-
 }

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
-import {Thought} from '../models/thought';
-import {catchError, tap} from 'rxjs/operators';
+import { HttpHeaders} from '@angular/common/http';
+import { Thought } from '../models/thought';
+import { LocalDbService } from './local-db.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,29 +13,20 @@ export class ThoughtsService {
   };
 
   constructor(
-    private http: HttpClient
+     private localDbservice: LocalDbService
   ) { }
 
-  getThoughts(apiUrl: string): Observable<Thought[]> {
-    return this.http.get<any>(apiUrl)
-      .pipe(
-        tap(_ => console.log('fetched thoughts')),
-        catchError(this.handleError('getThoughts'))
-      );
+  getLatestThoughts(): Thought[]{
+    return this.localDbservice.getAll<Thought>('thoughts', null, null);
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
+  getThoughtsByUserEmail(userEmail: string): Thought[]{
+    var user = this.localDbservice.get('users','email', userEmail);
+    return this.localDbservice.getAll<Thought[]>('thoughts', 'username', user.name)
+  }
 
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      console.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+  updateThought(userName: string, content: any, likedBy: any, newTotalPennies: number): void{
+    this.localDbservice.update<Thought>('thoughts','username', userName, 'content', content,'likedBy', likedBy, newTotalPennies)
   }
 
 }

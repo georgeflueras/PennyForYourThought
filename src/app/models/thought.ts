@@ -1,7 +1,9 @@
 export interface Thought {
-  title: string;
-  subtitle: string;
+  username: string;
+  date: string;
   content: string;
+  likedBy: string[];
+  totalPennies: number;
 }
 
 export interface User {

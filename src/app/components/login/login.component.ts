@@ -77,7 +77,14 @@ export class LoginComponent {
         }
         this.loginEmail.setErrors(null);
         this.loginPassword.setErrors(null);
-        document.cookie = `user="${this.loginUser.email}"`;
+        if (this.rememberMe) {
+            const days = 2;
+            const date = new Date();
+            date.setDate(date.getDate() + days);
+            document.cookie = `user="${this.loginUser.email}; expires=${date.toUTCString()}"`;
+        } else {
+            sessionStorage.setItem('user', this.loginUser.email);
+        }
         this.router.navigate(['/thoughts']);
     }
       

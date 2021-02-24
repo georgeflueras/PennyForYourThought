@@ -15,10 +15,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { LiveDbService } from './live-db.service';
 import { LocalDbService } from './services/local-db.service';
 import { TermsComponent } from './components/terms/terms.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 
 
@@ -27,7 +26,8 @@ import { TermsComponent } from './components/terms/terms.component';
     AppComponent,
     LoginComponent,
     ThoughtsComponent,
-    TermsComponent
+    TermsComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,9 +44,6 @@ import { TermsComponent } from './components/terms/terms.component';
     MatToolbarModule,
     MatDialogModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(LiveDbService, { dataEncapsulation: false }
-
-    ),
   ],
   providers: [LocalDbService],
   bootstrap: [AppComponent]
