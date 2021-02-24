@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Local } from 'protractor/built/driverProviders';
 import { Thought, User } from 'src/app/models/thought';
 import { LocalDbService } from 'src/app/services/local-db.service';
 
@@ -12,18 +11,15 @@ import { LocalDbService } from 'src/app/services/local-db.service';
 export class DialogComponent implements OnInit {
   public thought: Thought;
   public thoughtContent: string="";
-  constructor(private localDbService: LocalDbService) 
-  {
-  }
+  constructor(private localDbService: LocalDbService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   submitThought(){
     const sessionUser = sessionStorage.getItem('user');
     let cookieUser = document.cookie?.split('="')[1]?.split(';')[0];
     const userEmail = sessionUser || cookieUser;
-    var currentTime = new Date();
+    let currentTime = new Date();
     this.thought = {
       username: this.localDbService.get<User>('users','email', userEmail).name,
       date: currentTime.toString(),

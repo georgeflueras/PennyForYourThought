@@ -39,14 +39,14 @@ export class LocalDbService {
         if (!this.db[table]) {
             return;
         }
-        var existingRecord = this.db[table].find((entity: T) => entity[property1] === value1 && entity[property2] === value2);
+        let existingRecord = this.db[table].find((entity: T) => entity[property1] === value1 && entity[property2] === value2);
         existingRecord[propertyToUpdate] = newValue;
         existingRecord['totalPennies'] = newTotalPennies;
         this.save();
     }
 
     delete<T>(table, propertyName, propertyValue) {
-        this.db[table] = this.db[table].filter((entity: T) => entity[propertyName] !== propertyValue)
+        this.db[table] = this.db[table].filter((entity: T) => entity[propertyName] !== propertyValue);
         this.save();
     }
 

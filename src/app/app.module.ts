@@ -19,8 +19,6 @@ import { LocalDbService } from './services/local-db.service';
 import { TermsComponent } from './components/terms/terms.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +41,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     MatIconModule,
     MatToolbarModule,
     MatDialogModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [LocalDbService],
   bootstrap: [AppComponent]
