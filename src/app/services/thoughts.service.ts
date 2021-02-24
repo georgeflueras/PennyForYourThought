@@ -21,12 +21,12 @@ export class ThoughtsService {
   }
 
   getThoughtsByUserEmail(userEmail: string): Thought[]{
-    var user = this.localDbservice.get('users','email', userEmail);
-    return this.localDbservice.getAll<Thought[]>('thoughts', 'username', user.name)
+    let user = this.localDbservice.get('users','email', userEmail);
+    return this.localDbservice.getAll<Thought[]>('thoughts', 'username', user.name);
   }
 
   updateThought(userName: string, content: any, likedBy: any, newTotalPennies: number): void{
-    this.localDbservice.update<Thought>('thoughts','username', userName, 'content', content,'likedBy', likedBy, newTotalPennies)
+    this.localDbservice.update<Thought>('thoughts','username', userName, 'content', content,'likedBy', likedBy, newTotalPennies);
   }
 
 }

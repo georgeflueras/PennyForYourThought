@@ -11,13 +11,13 @@ import { Router } from '@angular/router';
   templateUrl: './thoughts.component.html',
   styleUrls: ['./thoughts.component.css'],
 })
+
 export class ThoughtsComponent implements OnInit {
   public latestThoughtsList: Thought[];
   public myThoughtsList: Thought[];
   public user: User;
 
-  constructor(private thoughtsService: ThoughtsService, public dialog: MatDialog, private localDbService: LocalDbService, private router: Router) {
-  }
+  constructor(private thoughtsService: ThoughtsService, public dialog: MatDialog, private localDbService: LocalDbService, private router: Router) {}
 
   openDialog() {
     const dialogRef = this.dialog.open(DialogComponent);

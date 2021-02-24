@@ -15,9 +15,8 @@
   text-align: center;
 }
 
-.example-small-box,
-.example-large-box {
-
+.login-component,
+.signup-component {
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -26,17 +25,17 @@
   border-radius: 8px;
 }
 
-.example-small-box {
+.login-component {
   height: 300px;
   width: 300px;
 }
 
-.example-large-box {
+.signup-component {
   height: 300px;
   width: 300px;
 }
 
-.example-full-width {
+.text-input {
   width: 100%;
   margin-top: 10px;
 }
@@ -50,6 +49,6 @@
   margin-top: 20px;
 }
 
-.example-margin {
+.remember-checkbox {
   margin-top: 40px;
 }

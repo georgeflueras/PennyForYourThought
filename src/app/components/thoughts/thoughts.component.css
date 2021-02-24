@@ -2,6 +2,7 @@
   display: flex;
   padding: 0;
 }
+
 .title {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
@@ -23,14 +24,13 @@
 .thoughts-container {
   display: flex;
   flex-direction: row;
-
   padding: 10px;
   width: 100%;
 }
 
 .my-thoughts {
   justify-content: center;
-  background-color: #e8ecf1; 
+  background-color: #e8ecf1;
   font-size: 30px;
   margin: 0 0 0 60px;
   height: 800px;
@@ -97,6 +97,7 @@
   padding: 8px;
   height: 52px;
 }
+
 .penny-text {
   font-size: 18px;
   margin: 0;
@@ -131,28 +132,36 @@
   .navbar {
     display: block;
   }
+
   .my-thoughts {
     display: none;
   }
+
   .latest-thoughts {
     display: none;
   }
+
   .mobile-content {
     display: block;
   }
+
   .add-thought-btn {
     font-size: 18px;
     margin-top: 8px;
   }
+
   .thoughts-container {
     padding: 0;
   }
+
   .latest-thoughts-mobile {
     padding-top: 10px;
   }
+
   .navbar-title {
     display: none;
   }
+
   .username {
     justify-items: center;
   }
@@ -162,19 +171,21 @@
   .mobile-content {
     display: none;
   }
+
   .latest-thoughts {
     width: 70%;
     margin: 0 0 0 10px;
-    -webkit-box-shadow: 0px 11px 32px -16px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 11px 32px -16px rgba(0,0,0,0.75);
-box-shadow: 0px 11px 32px -16px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 11px 32px -16px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 11px 32px -16px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 11px 32px -16px rgba(0, 0, 0, 0.75);
   }
+  
   .my-thoughts {
     width: 70%;
     margin: 0 10px 0 0;
-    -webkit-box-shadow: 0px 11px 32px -16px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 11px 32px -16px rgba(0,0,0,0.75);
-box-shadow: 0px 11px 32px -16px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 11px 32px -16px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 11px 32px -16px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 11px 32px -16px rgba(0, 0, 0, 0.75);
   }
 }
 

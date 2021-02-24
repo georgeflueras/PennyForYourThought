@@ -37,7 +37,6 @@ export class LoginComponent {
     public confirmPassword: string;
     public passwordDoesNotMatch: boolean = false;
 
-
     constructor(public dialog: MatDialog, private localDbService: LocalDbService, private router: Router) {
         this.nameFormControl = new FormControl('fullName', []);
         this.emailFormControl = new FormControl('email', [ 

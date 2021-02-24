@@ -7,8 +7,8 @@
         <mat-card-content>
             <mat-tab-group dynamicHeight [(selectedIndex)]="selectedTab">
                 <mat-tab label="Login"  [routerLink]="['/login']">
-                    <div class="example-small-box">
-                        <mat-form-field class="example-full-width">
+                    <div class="login-component">
+                        <mat-form-field class="text-input">
                             <mat-label>Email</mat-label>
                             <input type="email" matInput [formControl]="loginEmail" [(ngModel)]="loginUser.email"
                                 placeholder="Ex. john@example.com">
@@ -20,7 +20,7 @@
                             </mat-error>
                         </mat-form-field>
 
-                        <mat-form-field class="example-full-width">
+                        <mat-form-field class="text-input">
                             <mat-label>Password</mat-label>
                             <input type="password" [formControl]="loginPassword" (keyup.enter)="login()"
                                 [(ngModel)]="loginUser.password" matInput placeholder="Password">
@@ -29,21 +29,21 @@
                             </mat-error>
                         </mat-form-field>
                     </div>
-                    <mat-checkbox class="example-margin" [(ngModel)]="rememberMe" [(indeterminate)]="indeterminate"
+                    <mat-checkbox class="remember-checkbox" [(ngModel)]="rememberMe" [(indeterminate)]="indeterminate"
                         [labelPosition]="labelPosition" [disabled]="disabled">Remember me
                     </mat-checkbox>
                     <button mat-raised-button color="primary" class="login-button" (click)="login()">Login</button>
                 </mat-tab>
 
                 <mat-tab label="Sign Up" [routerLink]="['/signup']">
-                    <div class="example-large-box">
+                    <div class="signup-component">
 
-                        <mat-form-field class="example-full-width">
+                        <mat-form-field class="text-input">
                             <mat-label>Full Name</mat-label>
                             <input type="text" [(ngModel)]="newUser.name" matInput placeholder="John Doe">
                         </mat-form-field>
 
-                        <mat-form-field class="example-full-width">
+                        <mat-form-field class="text-input">
                             <mat-label>Email</mat-label>
                             <input type="email" matInput [formControl]="emailFormControl" [(ngModel)]="newUser.email"
                                 placeholder="Ex. john@example.com">
@@ -56,12 +56,12 @@
                             </mat-error>
                         </mat-form-field>
 
-                        <mat-form-field class="example-full-width">
+                        <mat-form-field class="text-input">
                             <mat-label>Password</mat-label>
                             <input type="password" [(ngModel)]="newUser.password" matInput placeholder="Password">
                         </mat-form-field>
 
-                        <mat-form-field class="example-full-width">
+                        <mat-form-field class="text-input">
                             <mat-label>Confirm Password</mat-label>
                             <input name="confirmPassword" type="password" [(ngModel)]="confirmPassword"
                                 [formControl]="confirmPasswordFormControl" matInput placeholder="Password">
