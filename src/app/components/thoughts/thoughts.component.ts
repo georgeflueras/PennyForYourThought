@@ -45,7 +45,6 @@ export class ThoughtsComponent implements OnInit {
   }
 
   getMyThoughts() {
-    
     const sessionUser = sessionStorage.getItem('user');
     let cookieUser = document.cookie?.split('="')[1]?.split(';')[0];
     const userEmail = sessionUser || cookieUser;
@@ -78,7 +77,7 @@ export class ThoughtsComponent implements OnInit {
   logout() {
     sessionStorage.setItem('user', null);
     document.cookie = `user=";expires=Thu, 01 Jan 1970 00:00:00 GMT"`;
-    this.router.navigateByUrl('/login')
+    this.router.navigateByUrl('/login');
   }
 
 }
