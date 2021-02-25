@@ -45,11 +45,6 @@ export class LocalDbService {
         this.save();
     }
 
-    delete<T>(table, propertyName, propertyValue) {
-        this.db[table] = this.db[table].filter((entity: T) => entity[propertyName] !== propertyValue);
-        this.save();
-    }
-
     save() {
         localStorage.setItem('database', JSON.stringify(this.db));
     }
