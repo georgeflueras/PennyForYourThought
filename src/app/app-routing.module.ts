@@ -8,7 +8,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { TermsComponent } from './components/terms/terms.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'thoughts', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'thoughts', component: ThoughtsComponent, canActivate: [AuthGuardService] },
   { path: 'signup', component: LoginComponent },

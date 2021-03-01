@@ -28,13 +28,17 @@ export class ThoughtsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.user = this.getCurrentUser();
     this.getLatestThoughts();
     this.getMyThoughts();
-    this.user = this.getCurrentUser();
   }
 
   getLatestThoughts() {
-    let thoughts = this.thoughtsService.getLatestThoughts();
+    let thoughts = this.thoughtsService.getLatestThoughts().filter(thought => {
+      if(thought.username !== this.user.name){
+        return thought;
+      }
+    });
     if(thoughts){
       this.latestThoughtsList = thoughts.sort((a,b) => {
         let date1 = new Date(b.date);
@@ -75,7 +79,7 @@ export class ThoughtsComponent implements OnInit {
   }
 
   logout() {
-    sessionStorage.setItem('user', null);
+    sessionStorage.removeItem('user');
     document.cookie = `user=";expires=Thu, 01 Jan 1970 00:00:00 GMT"`;
     this.router.navigateByUrl('/login');
   }
