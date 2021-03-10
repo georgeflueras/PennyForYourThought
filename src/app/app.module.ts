@@ -18,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LocalDbService } from './services/local-db.service';
 import { TermsComponent } from './components/terms/terms.component';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     ThoughtsComponent,
     TermsComponent,
     DialogComponent,
+    DeleteDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,8 +44,9 @@ import { DialogComponent } from './components/dialog/dialog.component';
     MatIconModule,
     MatToolbarModule,
     MatDialogModule,
-    HttpClientModule
-  ],
+    HttpClientModule,
+    MatMenuModule
+    ],
   providers: [LocalDbService],
   bootstrap: [AppComponent]
 })

@@ -25,8 +25,8 @@ export class ThoughtsService {
     return this.localDbservice.getAll<Thought[]>('thoughts', 'username', user.name);
   }
 
-  updateThought(userName: string, content: any, likedBy: any, newTotalPennies: number): void{
-    this.localDbservice.update<Thought>('thoughts','username', userName, 'content', content,'likedBy', likedBy, newTotalPennies);
+  updateThought(thought: Thought, newTotalPennies: number): void{
+    this.localDbservice.update<Thought>('thoughts', thought, 'likedBy', newTotalPennies);
   }
 
 }
