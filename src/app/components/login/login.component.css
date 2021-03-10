@@ -52,3 +52,10 @@
 .remember-checkbox {
   margin-top: 40px;
 }
+
+.visibility-button{
+  position: absolute;
+  right: 0px;
+  margin-top: -15px;
+}
+

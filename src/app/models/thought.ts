@@ -1,5 +1,7 @@
 export interface Thought {
   username: string;
+  email: string;
+  edited: boolean;
   date: string;
   content: string;
   likedBy: string[];

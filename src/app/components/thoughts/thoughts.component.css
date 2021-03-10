@@ -128,6 +128,10 @@
   margin-top: 10px;
 }
 
+.card-menu{
+  position: absolute;
+  right: 20px;
+}
 @media screen and (max-width: 600px) {
   .navbar {
     display: block;

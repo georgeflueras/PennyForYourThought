@@ -35,12 +35,19 @@ export class LocalDbService {
         }
     }
 
-    update<T>(table, property1, value1, property2, value2, propertyToUpdate, newValue, newTotalPennies){
+    delete<T>(table, thought) {
+        const thoughtToDelete = this.db[table].find((entity: T) => entity['email'] === thought.email && entity['date'] === thought.date);
+        console.log(thoughtToDelete);
+        this.db[table] = this.db[table].filter((entity: T) => entity !== thoughtToDelete );
+        this.save();
+    }
+
+    update<T>(table, thought, property, newTotalPennies){
         if (!this.db[table]) {
             return;
         }
-        let existingRecord = this.db[table].find((entity: T) => entity[property1] === value1 && entity[property2] === value2);
-        existingRecord[propertyToUpdate] = newValue;
+        let existingRecord = this.db[table].find((entity: T) => entity['email'] === thought.email && entity['date'] === thought.date);
+        existingRecord[property] = thought[property];
         existingRecord['totalPennies'] = newTotalPennies;
         this.save();
     }

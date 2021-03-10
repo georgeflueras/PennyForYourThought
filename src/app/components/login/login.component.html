@@ -6,12 +6,12 @@
         </mat-card-header>
         <mat-card-content>
             <mat-tab-group dynamicHeight [(selectedIndex)]="selectedTab">
-                <mat-tab label="Login"  [routerLink]="['/login']">
+                <mat-tab label="Login" [routerLink]="['/login']">
                     <div class="login-component">
                         <mat-form-field class="text-input">
                             <mat-label>Email</mat-label>
-                            <input required type="email" matInput [formControl]="loginEmail" [(ngModel)]="loginUser.email"
-                                placeholder="Ex. john@example.com">
+                            <input required type="email" matInput [formControl]="loginEmail"
+                                [(ngModel)]="loginUser.email" placeholder="Ex. john@example.com">
                             <mat-error *ngIf="!loginEmail.hasError('required')">
                                 Invalid <strong>email</strong>
                             </mat-error>
@@ -22,8 +22,11 @@
 
                         <mat-form-field class="text-input">
                             <mat-label>Password</mat-label>
-                            <input required type="password" [formControl]="loginPassword" (keyup.enter)="login()"
+                            <input required #input type="password" [formControl]="loginPassword" (keyup.enter)="login()"
                                 [(ngModel)]="loginUser.password" matInput placeholder="Password">
+                            <button mat-icon-button color="primary" class="visibility-button" (click)="changeInput(input)">
+                                <mat-icon>{{passwordIcon}}</mat-icon>
+                            </button>
                             <mat-error *ngIf="!loginPassword.hasError('required')">
                                 Invalid <strong>password</strong>
                             </mat-error>

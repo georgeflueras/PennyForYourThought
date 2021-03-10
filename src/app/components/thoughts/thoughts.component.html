@@ -11,13 +11,27 @@
     <div class="my-thoughts">
         <div class="card-title">My thoughts</div>
         <div class="action-container">
-            <button mat-raised-button color="accent" (click)="openDialog()" class="add-thought-btn">Add New Thought</button>
+            <button mat-raised-button color="accent" (click)="addThought()" class="add-thought-btn">Add New Thought</button>
         </div>
         <ng-container *ngFor="let thought of myThoughtsList">
             <mat-card class="card">
                 <div class="card-padding">
                     <mat-card-header>
-                        <mat-card-subtitle>{{thought.date | date:'EEEE, MMMM d, y, h:mm:ss a'}}</mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="thought.edited">{{thought.date | date:'EEEE, MMMM d, y, h:mm:ss a'}} - <i>Edited</i></mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="!thought.edited">{{thought.date | date:'EEEE, MMMM d, y, h:mm:ss a'}}</mat-card-subtitle>
+                        <button mat-icon-button [matMenuTriggerFor]="menu" class="card-menu">
+                            <mat-icon>more_horizontal</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="editPost(thought)">
+                                <mat-icon>edit</mat-icon>
+                                <span>Edit Post</span>
+                            </button>
+                            <button mat-menu-item (click)="deletePost(thought)">
+                                <mat-icon>delete</mat-icon>
+                                <span>Delete</span>
+                            </button>
+                        </mat-menu>
                     </mat-card-header>
                     <mat-card-content>
                         <p>{{thought.content}}</p>
@@ -37,8 +51,9 @@
             <mat-card class="card">
                 <div class="card-padding">
                     <mat-card-header>
-                        <mat-card-title>{{thought.username}}</mat-card-title>
-                        <mat-card-subtitle>{{thought.date | date:'EEEE, MMMM d, y, h:mm:ss a'}}</mat-card-subtitle>
+                        <mat-card-title>{{thought.username}} - {{showEmail(thought)}}</mat-card-title>
+                        <mat-card-subtitle *ngIf="thought.edited">{{thought.date | date:'EEEE, MMMM d, y, h:mm:ss a'}} - <i>Edited</i></mat-card-subtitle>
+                        <mat-card-subtitle *ngIf="!thought.edited">{{thought.date | date:'EEEE, MMMM d, y, h:mm:ss a'}}</mat-card-subtitle>
                     </mat-card-header>
                     <mat-card-content>
                         <p>{{thought.content}}</p>
@@ -46,8 +61,11 @@
                 </div>
                 <div class="penny-container">
                     <p class="penny-text">{{thought.totalPennies}} pennies collected</p>
-                    <button mat-raised-button color="accent" class="penny-btn" (click)="likeThought(thought)" *ngIf="!isLiked(thought)">+ €</button>
-                    <button mat-raised-button color="disabled" class="penny-btn" *ngIf="isLiked(thought)" disabled><mat-icon>thumb_up</mat-icon></button>
+                    <button mat-raised-button color="accent" class="penny-btn" (click)="likeThought(thought)"
+                        *ngIf="!isLiked(thought)">+ €</button>
+                    <button mat-raised-button color="disabled" class="penny-btn" *ngIf="isLiked(thought)" disabled>
+                        <mat-icon>thumb_up</mat-icon>
+                    </button>
                 </div>
             </mat-card>
         </ng-container>
@@ -60,13 +78,29 @@
         <mat-tab label="My Thoughts" class="latest-thoughts-label">
             <div class="my-thoughts-mobile">
                 <div class="action-container">
-                    <button mat-raised-button color="accent" (click)="openDialog()" class="add-thought-btn">Add New Thought</button>
+                    <button mat-raised-button color="accent" (click)="addThought()" class="add-thought-btn">Add New
+                        Thought</button>
                 </div>
                 <ng-container *ngFor="let thought of myThoughtsList">
                     <mat-card class="card">
                         <div class="card-padding">
                             <mat-card-header>
-                                <mat-card-subtitle>{{thought.date | date:'EEEE, MMMM d, y, h:mm:ss a'}}</mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="thought.edited">{{thought.date | date:'EEEE, MMMM d, y, h:mm:ss a'}} - <i>Edited</i></mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="!thought.edited">{{thought.date | date:'EEEE, MMMM d, y, h:mm:ss a'}}</mat-card-subtitle>
+                                    <button mat-icon-button [matMenuTriggerFor]="menu" class="card-menu">
+                                        <mat-icon>more_horizontal</mat-icon>
+                                    </button>
+                                    <mat-menu #menu="matMenu">
+                                        <button mat-menu-item (click)="editPost(thought)">
+                                            <mat-icon>edit</mat-icon>
+                                            <span>Edit Post</span>
+                                        </button>
+                                        <button mat-menu-item (click)="deletePost(thought)"> 
+                                            <mat-icon>delete</mat-icon>
+                                            <span>Delete</span>
+                                        </button>
+                                    </mat-menu>
+                                
                             </mat-card-header>
                             <mat-card-content>
                                 <p>{{thought.content}}</p>
@@ -76,35 +110,39 @@
                             <p class="penny-text">{{thought.totalPennies}} pennies collected</p>
                         </div>
                     </mat-card>
-    
+
                 </ng-container>
             </div>
         </mat-tab>
 
         <mat-tab label="Latest Thoughts">
             <div class="latest-thoughts-mobile">
-            <ng-container *ngFor="let thought of latestThoughtsList">
-                <mat-card class="card">
-                    <div class="card-padding">
-                        <mat-card-header>
-                            <mat-card-title>{{thought.username}}</mat-card-title>
-                            <mat-card-subtitle>{{thought.date | date:'EEEE, MMMM d, y, h:mm:ss a'}}</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                            <p>{{thought.content}}</p>
-                        </mat-card-content>
-                    </div>
-                    <div class="penny-container">
-                        <p class="penny-text">{{thought.totalPennies}} pennies collected</p>
-                        <button mat-raised-button color="accent" class="penny-btn" (click)="likeThought(thought)" *ngIf="!isLiked(thought)">+ €</button>
-                        <button mat-raised-button color="disabled" class="penny-btn" *ngIf="isLiked(thought)" disabled><mat-icon>thumb_up</mat-icon></button>
+                <ng-container *ngFor="let thought of latestThoughtsList">
+                    <mat-card class="card">
+                        <div class="card-padding">
+                            <mat-card-header>
+                                <mat-card-title>{{thought.username}}</mat-card-title>
+                                <mat-card-subtitle *ngIf="thought.edited">{{thought.date | date:'EEEE, MMMM d, y, h:mm:ss a'}} - <i>Edited</i></mat-card-subtitle>
+                                <mat-card-subtitle *ngIf="!thought.edited">{{thought.date | date:'EEEE, MMMM d, y, h:mm:ss a'}}</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <p>{{thought.content}}</p>
+                            </mat-card-content>
                         </div>
-                </mat-card>
-            </ng-container>
-        </div>
+                        <div class="penny-container">
+                            <p class="penny-text">{{thought.totalPennies}} pennies collected</p>
+                            <button mat-raised-button color="accent" class="penny-btn" (click)="likeThought(thought)"
+                                *ngIf="!isLiked(thought)">+ €</button>
+                            <button mat-raised-button color="disabled" class="penny-btn" *ngIf="isLiked(thought)"
+                                disabled>
+                                <mat-icon>thumb_up</mat-icon>
+                            </button>
+                        </div>
+                    </mat-card>
+                </ng-container>
+            </div>
         </mat-tab>
     </mat-tab-group>
 </div>
 
 <router-outlet></router-outlet>
-
